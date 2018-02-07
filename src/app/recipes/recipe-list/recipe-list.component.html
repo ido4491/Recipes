@@ -1,0 +1,37 @@
+
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-success" (click)="onNewRecipeClick()">New Recipe</button>
+  </div>
+</div>
+<hr>
+<div class="row search">
+  <div class="col-md-4">
+    <input type="text" placeholder="Search" class="form-control"  [(ngModel)]="searchFilter">
+  </div>
+  <div class="col-md-4">
+    <div class="btn-group" data-toggle="buttons">
+      <label><input type="checkbox" autocomplete="off" (change)="meat = !meat"> Meat</label>
+      <label><input type="checkbox" autocomplete="off" (change)="vegan = !vegan"> Vegan</label>
+      <label><input type="checkbox" autocomplete="off" (change)="vegetartian = !vegetartian"> Vegetartian</label>
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="form-group form-inline">
+      <label>Max Ing: </label>
+      <input
+              type="number"
+              class="form-control number-input"
+              min="0"
+              [(ngModel)]="count">
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-12">
+    <app-recipe-item *ngFor="let recipeEl of recipes | filter:searchFilter | checkFlter:meat:vegan:vegetartian | ingredientFilter:count; let i = index"
+                     [recipe]="recipeEl"
+                     [index]="i"
+    ></app-recipe-item>
+  </div>
+</div>

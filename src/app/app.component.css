@@ -1,0 +1,11 @@
+.wrapper {
+  /*height: calc(100% - 192px);*/
+  min-height: calc(100% - 192px);
+  width: 100%;
+  border: 10px;
+  padding: 20px;
+}
+
+footer {
+  float: bottom;
+}
